@@ -1,0 +1,46 @@
+.todos {
+    margin-top: 2%;
+}
+
+#item-id {
+    cursor: pointer;
+}
+
+.todo-items{
+    font-size : 20px;
+    font-style : monospace;
+    border : 1px solid grey;
+    margin: auto;
+    width: 60%;
+    padding : 0.5% 0.5% 0.5% 1%;
+}
+
+.todo-item {
+    text-decoration: line-through;
+    text-decoration-color: grey;
+}
+
+#todo-id:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+#todo-id:hover {
+    background-color: rgb(180, 179, 179);
+}
+
+img {
+    font-size: 10px;
+    float : right;
+}
+
+.right-tab {
+    float:right;
+    margin-left : 1%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.right-tab:hover {
+    background-color: black;
+    color: #fff;
+}
