@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client'
 import { useEffect, useState } from 'react';
 import '../css/ShowTodo.css'
 import { TODO } from '../graphQL/queries';
-import { UPDATE_DONE, DELETE_TODO, UPDATE_DESCRIPTION } from '../graphQL/mutation'
+import { UPDATE_DONE, DELETE_TODO } from '../graphQL/mutation'
 
 function ShowTodo() {
     const [todos, setTodos] = useState([])
@@ -16,16 +16,15 @@ function ShowTodo() {
         if(data) setTodos(data.todos)
     }, [data, loading, error])
 
-    function handleClick(id, done) {
+    const handleDone = (id, done) => {
         updateDone(
             { variables : { 
                 id : id,
                 done : !done
             }
         })
-    }
-    
-    function handleDelete(id) {
+    } 
+    const handleDelete = (id) => {
         deleteTodo(
             {
                 variables : {
@@ -42,15 +41,14 @@ function ShowTodo() {
                 <p className="todo-items" id='todo-id' key={todo.id}>
                 <span  
                     className={todo.done?'todo-item':'false-todo-item'}
-                    id = "item-id" 
+                    id = "item-id"
                     onClick={() => {
-                        handleClick(todo.id, todo.done)
+                        handleDone(todo.id, todo.done)
                     }}
-                >
-                {todo.description}
+                    >
+                    {todo.description}
                 </span>
                 <button className="right-tab" onClick={() => handleDelete(todo.id)}>delete</button>
-                <button className="right-tab">edit</button>
                 </p>
             )}
         </div>
