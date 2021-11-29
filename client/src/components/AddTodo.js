@@ -5,8 +5,9 @@ import  '../css/AddTodo.css'
 import { TODO } from '../graphQL/queries'
 
 function AddTodo() {
-    const [addTodo] = useMutation(CREATE_TODO)
-    const { refetch } = useQuery(TODO)
+    const [addTodo] = useMutation(CREATE_TODO, {
+        refetchQueries : [ TODO ],   
+    })
     const [description, setDescription] = useState('')
 
     const handleClick = (e) => {
@@ -16,13 +17,12 @@ function AddTodo() {
         }
         else {
             addTodo({ variables: { description } })
-            refetch()
             setDescription('')
         }
     }
 
     return (
-        <div className = "addTodo">
+        <div className = "add-todos">
             <label htmlFor="add-todo">
                 Add Todo : 
             </label>
